@@ -1,1 +1,17 @@
-works update
+<!DOCTYPE html>
+<html>
+    <head><title>Update</title></head>
+    <body>
+        <h1>All Posts to Update</h1>
+        <ul>
+            {% for post in posts %}
+                <li><b>Title: {{ post.title }}</b></li>
+                <li>Author: {{ post.name }}</li>
+                <li>Date: {{ post.date }}</li>
+                <li><a href = "/read/{{ post.id }}">Read More</a></li>
+                <li><a href = "/update/{{ post.id }}">Update</a></li>
+                <br>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

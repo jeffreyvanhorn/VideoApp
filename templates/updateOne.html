@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Update</title>
+    </head>
+    <body>
+        <h1>Update a Post</h1>
+
+        <form action = "/update/{{ post.id }}/update" method = "post">
+            <label for = "aname">Name</label>
+            <input type = "text" name = "aname" id = "nameInput" value = "{{ post.name }}">
+            <br>
+            <label for = "title">Title</label>
+            <input type = "text" name = "title" id = "titleInput" value = "{{ post.title }}">
+            <br>
+            <label for = "date">Date</label>
+            <input type = "text" name = "date" id = "dateInput" value = "{{ post.date }}">
+            <br>
+            <label for = "post">Write Post</label>
+            <br>
+            <textarea id="postText" name="post" rows="30" cols="60">
+                {{ post.post }}
+            </textarea>
+            <input type = "submit" value = "submit">
+        </form>
+    </body>
+</html>
