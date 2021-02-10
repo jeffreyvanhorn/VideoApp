@@ -125,10 +125,6 @@ def updatePage():
     #get all of the posts so one to edit can be chosen
     return render_template("update.html", posts = getAllPosts())
 
-@app.route("/delete")
-def deletePage():
-    return render_template("delete.html")
-
 @app.route("/update/<string:postID>")
 def updatePost(postID):
     try:
@@ -171,6 +167,19 @@ def processUpdate(postID):
     #return the created template
     #pass the message to the template which it will render
     return render_template("created.html", message=result_of_add_message)
+
+@app.route("/delete")
+def deletePage():
+    return render_template("delete.html", posts = getAllPosts())
+
+@app.route("/delete/<string:postID>")
+def delete(postID):
+    try:
+        db.collection('posts').document(postID).delete()
+        #return render_template("updateOne.html", post = getSinglePost(postID).to_dict())
+        return render_template("delete.html")
+    except Exception as e:
+        return f"An Error Occured: {e}"
 
 #run the app
 if __name__ == "__main__":
